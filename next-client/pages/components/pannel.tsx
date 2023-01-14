@@ -9,47 +9,52 @@ export default function PannelAllowAnywhere(
 	const [mousePos, setMousePos] = useState<any>({});
 
 	return (
-		<div style={{ ...props, display: 'block' }}>
-			{children.map((child, i) => {
-				return (
-					<div
-						key={i}
-						draggable
-						style={{ display: 'inline-block', left: '100px', top: '100px' }}
-						onMouseDown={(event: React.MouseEvent) => {
-							let newPos = mousePos;
-							const anyEvent: any = event;
-							const target: Element = anyEvent.target;
-							newPos[i] = {
-								X: event.clientX - target.getBoundingClientRect().left,
-								Y: event.clientY - target.getBoundingClientRect().top,
-							};
-							setMousePos({ ...newPos });
-						}}
-						onDragEnd={(event: React.DragEvent<HTMLDivElement>) => {
-							const anyEvent: any = event;
-							const target: HTMLDivElement = anyEvent.target;
-							target.setAttribute(
-								'style',
-								`
-							    left:${
-										mousePos[i] && mousePos[i].X
-											? event.clientX - mousePos[i].X
-											: event.clientX
+		<>
+			<div style={{ ...props, display: 'block', position: "relative" }}>
+				{children.map((child, i) => {
+					return (
+						<div
+							key={i}
+							draggable={child.props.draggable ? child.props.draggable : 'true'}
+							style={{ width: "fit-content", position: "absolute" }}
+							onMouseDown={(event: React.MouseEvent) => {
+								setMousePos((mousePos: any) => {
+									let newPos = mousePos;
+									const anyEvent: any = event;
+									const target: Element = anyEvent.target;
+									newPos[i] = {
+										X: event.clientX - target.getBoundingClientRect().left,
+										Y: event.clientY - target.getBoundingClientRect().top,
+									};
+									return newPos
+								});
+							}}
+							onDragEnd={(event: React.DragEvent<HTMLDivElement>) => {
+								const anyEvent: any = event;
+								const target: HTMLDivElement = anyEvent.target;
+								if (!target.getAttribute("draggable")) return
+								target.setAttribute(
+									'style',
+									`
+								position:absolute !important;
+								width: fit-content;
+							    left:${mousePos[i] && mousePos[i].X
+										? event.clientX - mousePos[i].X
+										: event.clientX
 									}px;
-							    top:${
-										mousePos[i] && mousePos[i].Y
-											? event.clientY - mousePos[i].Y
-											: event.clientY
+							    top:${mousePos[i] && mousePos[i].Y
+										? event.clientY - mousePos[i].Y
+										: event.clientY
 									}px;
 							    `,
-							);
-						}}
-					>
-						{child}
-					</div>
-				);
-			})}
-		</div>
+								);
+							}}
+						>
+							{child}
+						</div>
+					);
+				})}
+			</div>
+		</>
 	);
 }
