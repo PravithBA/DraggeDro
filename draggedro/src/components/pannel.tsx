@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 
-export default function PannelAllowAnywhere(
+function PannelAllowAnywhere(
 	props: React.CSSProperties & {
 		children: Array<JSX.Element>;
 	},
 ) {
-	const { children } = props;
-	const [mousePos, setMousePos] = useState<any>({});
+	const { children } = props
+	const [mousePos, setMousePos] = useState<{ [key: number]: { X: number, Y: number } }>({});
 
 	return (
 		<>
 			<div style={{ ...props, display: 'block', position: "relative" }}>
-				{children.map((child, i) => {
+				{children.map((child: JSX.Element, i: number) => {
 					return (
 						<div
 							key={i}
-							draggable={child.props.draggable ? child.props.draggable : 'true'}
+							className=""
+							draggable={child.props.draggable ? child.props.draggable : true}
 							style={{ width: "fit-content", position: "absolute" }}
 							onMouseDown={(event: React.MouseEvent) => {
 								setMousePos((mousePos: any) => {
@@ -58,3 +59,5 @@ export default function PannelAllowAnywhere(
 		</>
 	);
 }
+
+export { PannelAllowAnywhere }
