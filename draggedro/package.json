@@ -1,5 +1,5 @@
 {
-  "name": "draggedro",
+  "name": "dragge-dro",
   "version": "1.0.0",
   "description": "Now you can add drag and drop to your website easily with just including the components",
   "main": "dist/bundle.js",
@@ -10,7 +10,7 @@
     "tsc": "tsc",
     "webpack-build": "webpack"
   },
-  "author": "",
+  "author": "Pravith",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.20.7",
