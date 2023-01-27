@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-
-function PannelAllowAnywhere(
-	props: React.CSSProperties & {
-		children: Array<JSX.Element>;
-	},
-) {
+type Props = React.CSSProperties & {
+	children: JSX.Element[];
+}
+export const PannelAllowScreen: React.FunctionComponent<Props> = (props) => {
 	const { children } = props
 	const [mousePos, setMousePos] = useState<{ [key: number]: { X: number, Y: number } }>({});
 
 	return (
 		<>
-			<div style={{ ...props, display: 'block', position: "relative" }}>
+			<div style={{ ...props, display: 'block', position: "relative", width: "100vw", height: "100vh" }}>
 				{children.map((child: JSX.Element, i: number) => {
 					return (
 						<div
@@ -59,5 +57,3 @@ function PannelAllowAnywhere(
 		</>
 	);
 }
-
-export { PannelAllowAnywhere }

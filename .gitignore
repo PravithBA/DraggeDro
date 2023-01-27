@@ -4,11 +4,8 @@
 **/node_modules
 /.pnp
 .pnp.js
-
-/fart
-/fuck
-/test
-/next-client
+**/dist
+/next-client 
 # testing
 /coverage
 

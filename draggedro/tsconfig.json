@@ -7,19 +7,23 @@
       "dom.iterable",
       "esnext"
     ],
-    "outDir": "./dist",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "preserve"
+    "noEmit": false,
+    "jsx": "react",
+    "module": "ESNext",
+    "declaration": true,
+    "declarationDir": "types",
+    "sourceMap": true,
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "emitDeclarationOnly": true
   },
   "include": [
     "src/**/*.ts",
@@ -27,7 +31,7 @@
     "**/*.tsx",
     "**/*.ts",
     "src/index.tsx",
-    "src/components/pannel.tsx",
+    "src/components/PannelAllowScreen.tsx",
   ],
   "exclude": [
     "node_modules"
