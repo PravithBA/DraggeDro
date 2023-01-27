@@ -97,8 +97,9 @@ const MyComponent: React.FC = () => {
   );
 };
 ```
+Output:
 
-[Output](misc/PannelAllowScreenVideo.mkv)
+![Alt text](misc/PannelAllowScreenImage.png)
 
 ## Contributing
 
