@@ -1,7 +1,7 @@
 {
   "name": "dragge-dro-react",
-  "version": "0.1.1",
-  "description": "LoL",
+  "version": "0.1.2",
+  "description": "Now you can add drag and drop to your website easily with just including the components",
   "scripts": {
     "rollup": "rm -r ./dist; rollup -c",
     "test": "jest",

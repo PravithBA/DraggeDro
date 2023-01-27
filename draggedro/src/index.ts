@@ -1,1 +1,1 @@
-export * from './components/PannelAllowScreen'
+export * from './components'
