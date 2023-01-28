@@ -99,7 +99,7 @@ const MyComponent: React.FC = () => {
 ```
 Output:
 
-![Image Not Available](misc/PannelAllowScreenImage.png)
+![Alt text](misc/PannelAllowScreen.gif)
 
 ## Contributing
 
