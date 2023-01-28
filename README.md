@@ -1,5 +1,5 @@
-[![npm version](https://badge.fury.io/js/angular2-expandable-list.svg)](https://badge.fury.io/js/angular2-expandable-list)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+<!-- [![npm version](https://badge.fury.io/js/angular2-expandable-list.svg)](https://badge.fury.io/js/angular2-expandable-list)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) -->
 
 # Draggedro
 
@@ -27,7 +27,9 @@ v8.16.0
   - [Installation](#installation)
   - [Components](#components)
     - [PannelAllowScreen](#pannelallowscreen)
-      - [Props](#props)
+      <!-- - [Props](#props) -->
+    - [PannelAllowSpecified](#pannelallowspecified)
+      <!-- - [Props](#pannelallowspecifiedprops) -->
   - [Contributing](#contributing)
   - [Built With](#built-with)
   - [Authors](#authors)
@@ -56,6 +58,8 @@ $ yarn add --dev dragge-dro-react
 ## Components
 
 ### PannelAllowScreen
+
+ This component does not allow you to set the size of the component. The width and height of the component will be `100vw` and `100vh` respectively
 
 ```html
 <PannelAllowScreen>
@@ -99,7 +103,53 @@ const MyComponent: React.FC = () => {
 ```
 Output:
 
-![Alt text](https://raw.githubusercontent.com/PravithBA/DraggeDro/main/misc/PannelAllowScreen.gif)
+![Unavailable](https://raw.githubusercontent.com/PravithBA/DraggeDro/main/misc/PannelAllowScreen.gif)
+
+
+### PannelAllowSpecified
+
+  This component allows you to set the size of the component. The elements passed to this component cannot be dragged outside of the component. By default the width and height of the component will be `100vw` and `100vh` respectively 
+
+```html
+<PannelAllowSpecified>
+    {children...}
+</PannelAllowSpecified>
+```
+
+Supported props for `PannelAllowSpecified` component are listed below.
+
+#### Props
+
+- children -> JSX.Element[]: Elements needed to be draggable
+
+    > Note: The child components of the elements passed as children will not be 
+    draggable
+
+- React.CSSProperties: Any react css property can be passed as a prop to this component
+
+Example:
+
+```tsx
+const MyComponent: React.FC = () => {
+
+	const itemStyle: React.CSSProperties = {
+		padding: '1rem',
+		backgroundColor: 'black',
+		display: 'inline-block',
+		borderRadius: '1rem',
+		width: "inline",
+	};
+    return (
+    <PannelAllowAnywhere background="cyan" width= "50vw" height= "50vh" background= "aqua">
+      <div style={itemStyle}>Object</div>
+    </PannelAllowAnywhere>
+	
+  );
+};
+```
+Output:
+
+![Unavailable](https://raw.githubusercontent.com/PravithBA/DraggeDro/main/misc/PannelAllowSpecified.gif)
 
 ## Contributing
 

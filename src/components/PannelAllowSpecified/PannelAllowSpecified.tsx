@@ -1,24 +1,14 @@
 import React, { useRef, useState } from 'react';
+import { PannelMousePosition } from '../../types/pannelTypes';
 type Props = React.CSSProperties & {
 	children: JSX.Element[];
 }
 export const PannelAllowSpecified: React.FunctionComponent<Props> = (props) => {
 	const { children } = props
 	const componentRef: React.MutableRefObject<HTMLDivElement | null> = useRef(null)
-	const [mousePos, setMousePos] = useState<{
-		[key: string]: {
-			X: number,
-			Y: number,
-			offsetLeft: number,
-			offsetRight: number,
-			offsetTop: number,
-			offsetBottom: number,
-		}
-	}>({});
+	const [mousePos, setMousePos] = useState<PannelMousePosition>({});
 	const width = props.width ? props.width : "100vw"
 	const height = props.height ? props.height : "100vh"
-	let left = 23
-	let top = 43
 	return (
 		<>
 			<div ref={componentRef} style={{ ...props, display: 'block', position: "relative", width, height }}>
@@ -28,7 +18,7 @@ export const PannelAllowSpecified: React.FunctionComponent<Props> = (props) => {
 							key={i}
 							className=""
 							draggable={child.props.draggable ? child.props.draggable : true}
-							style={{ width: "fit-content", position: "absolute", top, left }}
+							style={{ width: "fit-content", position: "absolute" }}
 							onMouseDown={(event: React.MouseEvent) => {
 								setMousePos((mousePos) => {
 									let newPos = mousePos;

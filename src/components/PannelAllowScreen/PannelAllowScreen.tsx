@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { PannelMousePosition } from '../../types/pannelTypes';
 type Props = React.CSSProperties & {
 	children: JSX.Element[];
 }
 export const PannelAllowScreen: React.FunctionComponent<Props> = (props) => {
 	const { children } = props
-	const [mousePos, setMousePos] = useState<{ [key: string]: { X: number, Y: number } }>({});
+	const [mousePos, setMousePos] = useState<PannelMousePosition>({});
 
 	return (
 		<>
@@ -17,13 +18,21 @@ export const PannelAllowScreen: React.FunctionComponent<Props> = (props) => {
 							draggable={child.props.draggable ? child.props.draggable : true}
 							style={{ width: "fit-content", position: "absolute" }}
 							onMouseDown={(event: React.MouseEvent) => {
-								setMousePos((mousePos: any) => {
+								setMousePos((mousePos) => {
 									let newPos = mousePos;
 									const anyEvent: any = event;
 									const target: Element = anyEvent.target;
+									const offsetRight = Math.floor(target.getBoundingClientRect().right - event.clientX)
+									const offsetBottom = Math.floor(target.getBoundingClientRect().bottom - event.clientY)
+									const offsetLeft = Math.floor(event.clientX - target.getBoundingClientRect().left)
+									const offsetTop = Math.floor(event.clientY - target.getBoundingClientRect().top)
 									newPos[`${i}`] = {
-										X: event.clientX - target.getBoundingClientRect().left,
-										Y: event.clientY - target.getBoundingClientRect().top,
+										X: offsetLeft,
+										Y: offsetTop,
+										offsetLeft,
+										offsetRight,
+										offsetTop,
+										offsetBottom,
 									};
 									return newPos
 								});
