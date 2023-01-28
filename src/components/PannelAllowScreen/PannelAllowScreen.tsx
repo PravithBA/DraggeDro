@@ -4,7 +4,7 @@ type Props = React.CSSProperties & {
 }
 export const PannelAllowScreen: React.FunctionComponent<Props> = (props) => {
 	const { children } = props
-	const [mousePos, setMousePos] = useState<{ [key: number]: { X: number, Y: number } }>({});
+	const [mousePos, setMousePos] = useState<{ [key: string]: { X: number, Y: number } }>({});
 
 	return (
 		<>
@@ -21,7 +21,7 @@ export const PannelAllowScreen: React.FunctionComponent<Props> = (props) => {
 									let newPos = mousePos;
 									const anyEvent: any = event;
 									const target: Element = anyEvent.target;
-									newPos[i] = {
+									newPos[`${i}`] = {
 										X: event.clientX - target.getBoundingClientRect().left,
 										Y: event.clientY - target.getBoundingClientRect().top,
 									};
