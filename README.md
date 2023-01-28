@@ -99,7 +99,7 @@ const MyComponent: React.FC = () => {
 ```
 Output:
 
-![Alt text](misc/PannelAllowScreen.gif)
+![Alt text](https://raw.githubusercontent.com/PravithBA/DraggeDro/main/misc/PannelAllowScreen.gif)
 
 ## Contributing
 
