@@ -43,14 +43,14 @@ These instructions will get you a copy of the project up and running on your loc
 To install and set up the library, run:
 
 ```sh
-$ npm install -S dragge-dro-react
+$ npm install dragge-dro-react
 ```
 
-Or if you prefer using Yarn:
+<!-- Or if you prefer using Yarn:
 
 ```sh
 $ yarn add --dev dragge-dro-react
-```
+``` -->
 
 
 ## Components
@@ -59,7 +59,7 @@ $ yarn add --dev dragge-dro-react
 
 ```html
 <PannelAllowScreen>
-    children...
+    {children...}
 </PannelAllowScreen>
 ```
 
@@ -92,7 +92,7 @@ const MyComponent: React.FC = () => {
     <PannelAllowAnywhere background="cyan">
         <div style={itemStyle}>Object 1</div>
 	    <div style={itemStyle}>Object 2</div>
-	</PannelAllowAnywhere>
+    </PannelAllowAnywhere>
 	
   );
 };
